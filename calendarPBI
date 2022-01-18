@@ -1,0 +1,35 @@
+Dates Table =
+
+ADDCOLUMNS (
+
+CALENDAR (DATE(2017,01,01), DATE(2021,12,31)),
+
+"DateAsInteger", FORMAT ( [Date], "YYYYMMDD" ),
+
+"Year", YEAR ( [Date] ),
+
+"Monthnumber", FORMAT ( [Date], "MM" ),
+
+"YearMonthnumber", FORMAT ( [Date], "YYYY/MM" ),
+
+"YearMonthShort", FORMAT ( [Date], "YYYY/mmm" ),
+
+"MonthNameShort", FORMAT ( [Date], "mmm" ),
+
+"MonthNameLong", FORMAT ( [Date], "mmmm" ),
+
+"DayOfWeekNumber", WEEKDAY ( [Date] ),
+
+"DayOfWeek", FORMAT ( [Date], "dddd" ),
+
+"DayOfWeekShort", FORMAT ( [Date], "ddd" ),
+
+"Weeknum",WEEKNUM([Date]),
+
+"Quarter", FORMAT ( [Date], "Q" ),
+
+"YearQuarter", FORMAT ( [Date], "YYYY" ) & "/Q" & FORMAT ( [Date], "Q" ),
+
+"Month-Year", FORMAT([Date],"mmmm") & " "& YEAR([Date])
+
+)
