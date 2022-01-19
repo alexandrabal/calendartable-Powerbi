@@ -1,0 +1,21 @@
+
+drop table #customers
+select mk_CurrentCustomer, countryname, brandName, firstDepositDate, lastDepositDate 
+into #customers
+from Marts.Dim.vCurrentCustomer  
+
+where countryname like '%Gr%' and firstDepositDate >= '2021-12-01' and firstDepositDate <= '2021-12-31'
+and lastDepositDate <='2021-12-31'
+
+
+select count (distinct mk_CurrentCustomer), lastDepositDate
+from #customers
+
+
+select cust.*, dep.deposit_date as second_deposit_date
+into #customer_dep_dates
+from #customers as cust
+left join
+	(select mk_CurrentCustomer, deposit_date
+	from #customer_deposit_cnt
+	where cum_dep_count = 2) as dep on cust.mk_CurrentCustomer = dep.mk_CurrentCustomer
