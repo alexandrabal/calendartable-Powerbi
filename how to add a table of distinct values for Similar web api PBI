@@ -1,0 +1,22 @@
+= {
+            Number.From(
+                Date.AddMonths(
+                    Date.StartOfMonth(
+                            DateTime.Date(
+                        DateTime.LocalNow()
+                    )),
+                    -23
+                )
+            )..
+            Number.From(
+                Date.AddMonths(
+                    Date.EndOfMonth(
+                            DateTime.Date(
+                        DateTime.LocalNow()
+                )),-15
+                )
+            )          
+        }
+        
+        
+        
