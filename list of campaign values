@@ -1,0 +1,29 @@
+List of Campaign values = 
+VAR __DISTINCT_VALUES_COUNT = DISTINCTCOUNT('cocaCola_view_all_dashboard_all'[CampaignName])
+VAR __MAX_VALUES_TO_SHOW = 7
+RETURN
+	IF(
+		__DISTINCT_VALUES_COUNT > __MAX_VALUES_TO_SHOW,
+		CONCATENATE(
+			CONCATENATEX(
+				TOPN(
+					__MAX_VALUES_TO_SHOW,
+					VALUES('cocaCola_view_all_dashboard_all'[CampaignName]),
+					'cocaCola_view_all_dashboard_all'[CampaignName],
+					ASC
+				),
+				'cocaCola_view_all_dashboard_all'[CampaignName],
+				", ",
+				'cocaCola_view_all_dashboard_all'[CampaignName],
+				ASC
+			),
+			", etc."
+		),
+		CONCATENATEX(
+			VALUES('cocaCola_view_all_dashboard_all'[CampaignName]),
+			'cocaCola_view_all_dashboard_all'[CampaignName],
+			", ",
+			'cocaCola_view_all_dashboard_all'[CampaignName],
+			ASC
+		)
+	)
